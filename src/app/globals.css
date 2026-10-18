@@ -13,3 +13,11 @@
 @media (max-width: 480px) {
   .catalogue-filters input, .catalogue-filters select { width: 100%; min-width: 0; flex: auto; }
 }
+
+.fallback-shell{min-height:65vh;display:grid;place-items:center;padding:28px;background:var(--blush)}
+.fallback-card{width:min(560px,100%)}
+.fallback-card h1{font:normal clamp(30px,5vw,44px) Georgia,serif;margin:10px 0 16px}
+.fallback-card .actions{align-items:center}
+.fallback-card .button{margin-top:10px}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
