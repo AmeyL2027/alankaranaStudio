@@ -1,0 +1,34 @@
+# Dependencies and generated build output
+/node_modules/
+/.next/
+/out/
+/build/
+/dist/
+*.tsbuildinfo
+
+# Secrets (keep .env.example tracked)
+.env
+.env.*
+!.env.example
+
+# Local deployment metadata
+.vercel/
+
+# Logs, coverage, temporary files
+*.log
+/coverage/
+/playwright-report/
+/test-results/
+*.tmp
+*.temp
+*.swp
+
+# Local editor and OS metadata
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local Supabase state
+/supabase/.branches/
+/supabase/.profiles/
