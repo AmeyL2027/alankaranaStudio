@@ -1,0 +1,51 @@
+
+# Dependencies
+/node_modules/
+
+# Next.js build output
+/.next/
+/out/
+
+# Production build
+/build
+/dist
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Vercel deployment metadata
+.vercel/
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Local editor settings
+.vscode/
+.idea/
+
+# Testing and coverage
+/coverage/
+/playwright-report/
+/test-results/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+
+# Local Supabase files
+/supabase/.branches/
+/supabase/.profiles/

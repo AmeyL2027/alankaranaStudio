@@ -1,0 +1,10 @@
+'use client';
+import Link from 'next/link';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabase';
+export default function Login() {
+ const router = useRouter(); const [register,setRegister]=useState(false); const [email,setEmail]=useState(''); const [password,setPassword]=useState(''); const [busy,setBusy]=useState(false); const [message,setMessage]=useState('');
+ async function submit(e: React.FormEvent) {e.preventDefault();setBusy(true);setMessage('');try {const api=supabase(); const result=register ? await api.auth.signUp({email,password,options:{emailRedirectTo: `${window.location.origin}/dashboard`}}) : await api.auth.signInWithPassword({email,password});if(result.error) throw result.error;if(register && !result.data.session) setMessage('Check your email to confirm your account, then sign in.');else router.push('/dashboard');}catch(err){setMessage(err instanceof Error?err.message:'Authentication failed.');}finally{setBusy(false);}}
+ return <main><header className="top"><Link className="brand" href="/">✦ Alankarana <span>Studio</span></Link><Link href="/">← Storefront</Link></header><div className="auth-shell"><form className="panel auth" onSubmit={submit}><p className="eyebrow">SELLER WORKSPACE</p><h1>{register?'Create your account':'Welcome back'}</h1><p>Manage your jewellery collection with confidence.</p><label>Email<input required type="email" autoComplete="email" value={email} onChange={e=>setEmail(e.target.value)}/></label><label>Password<input required minLength={6} type="password" autoComplete={register?'new-password':'current-password'} value={password} onChange={e=>setPassword(e.target.value)}/></label><button className="button" disabled={busy}>{busy?'Please wait…':register?'Create account':'Sign in'}</button>{message&&<p role="status" className="notice">{message}</p>}<button type="button" className="text-button" onClick={()=>{setRegister(!register);setMessage('');}}>{register?'Already registered? Sign in':'New seller? Create an account'}</button></form></div></main>;
+}
